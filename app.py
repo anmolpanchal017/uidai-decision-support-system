@@ -61,4 +61,14 @@ def get_data():
         return jsonify({"error": str(e)})
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+possible_paths = [
+    os.path.join(BASE_DIR, 'data', 'final_decision_support_upgraded.csv'),
+    os.path.join(BASE_DIR, 'final_decision_support_upgraded.csv')
+]
